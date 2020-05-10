@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 
 const config = require('../config');
 
-mongoose.connect(`mongodb://${config.MONGO_HOST}/db1`, {
+const uri = config.MONGO_URI;
+
+mongoose.connect(uri, {
 	user: config.MONGO_USER,
 	pass: config.MONGO_PASS,
-	dbName: 'db1',
+	dbName: config.MONGO_DBNAME,
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useFindAndModify: false,
