@@ -2,7 +2,7 @@ const passport    = require('passport');
 const bcrypt      = require('bcrypt');
 
 module.exports = function (app, db) {
-      
+
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
@@ -64,5 +64,5 @@ module.exports = function (app, db) {
       .type('text')
       .send('Not Found');
   });
-  
+
 }

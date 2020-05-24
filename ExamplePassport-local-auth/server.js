@@ -27,10 +27,10 @@ mongo.connect(config.MONGO_URI, (err, client) => {
         console.log('Successful database connection');
         const db = client.db(config.MONGO_DBNAME);
         auth(app, db);
-      
+
         routes(app, db);
 
         app.listen(process.env.PORT || 3000, () => {
           console.log("Listening on port " + process.env.PORT);
-        });  
+        });
 }});
