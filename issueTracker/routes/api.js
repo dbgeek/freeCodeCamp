@@ -18,63 +18,50 @@ module.exports = function (app) {
     .get(function (req, res) {
       var project = req.params.project;
       const { query } = req;
-      const restToDB = {
-        issue_title: 'title',
-        issue_text: 'text', created_by: 'createdBy', assigned_to: 'assignedTo', status_text: 'statusText', open: 'open'
-      }
-      const dbToRest = {
-        title: 'issue_title',
-        test: 'issue_text',
-        createdBy: 'created_by',
-        assignedTo: 'assigned_to',
-        statusText: 'status_text'
-      }
+
       const keys = Object.keys(query);
       const filters = {};
-      keys.forEach( el => {
-        filters[restToDB[el]] = query[el];
+      keys.forEach(el => {
+        filters[el] = query[el];
       })
       issueModel.find(filters)
-      .then( (docs) => {
+        .then((docs) => {
 
-        const result = docs.map( (el) => {
-          return {
-            _id: el._id,
-            issue_title: el.title,
-            issue_text: el.text,
-            created_by: el.createdBy,
-            assigned_to: el.assignedTo,
-            status_text: el.statusText,
-            open: el.open ,
-            created_by: el.createdBy,
-            created_on: el.created_on,
-            updated_on: el.updated_on
-          }
+          const result = docs.map((el) => {
+            return {
+              _id: el._id,
+              issue_title: el.issue_title,
+              issue_text: el.issue_text,
+              created_by: el.created_by,
+              assigned_to: el.assigned_to,
+              status_text: el.status_text,
+              open: el.open,
+              created_by: el.created_by,
+              created_on: el.created_on,
+              updated_on: el.updated_on
+            }
+          })
+          res.send(result);
         })
-        res.send(result);
-      })
     })
     .post(async (req, res, next) => {
       var project = req.params.project;
       const {
-        issue_title: title, issue_text: text, created_by: createdBy, assigned_to: assignedTo = '', status_text: statusText = '', open,
+        issue_title, issue_text, created_by, assigned_to = '', status_text = '', open,
       } = req.body;
       try {
-        const issue = { title, text, createdBy, assignedTo, statusText };
+        const issue = { issue_title, issue_text, created_by, assigned_to, status_text };
         const savedIssue = await issueModel.create(issue);
-        const {
-          title: issue_title,
-          text: issue_text,
-          createdBy: created_by,
-          assignedTo: assigned_to,
-          statusText: status_text,
-          open: savedOpen,
-          created_on,
-          updated_on,
-          _id: saveID,
-        } = savedIssue;
         const response = {
-          issue_title, issue_text, created_by, assigned_to, status_text, open: savedOpen, created_on, updated_on, _id: saveID
+          issue_title: savedIssue.issue_title,
+          issue_text: savedIssue.issue_text,
+          created_by: savedIssue.created_by,
+          assigned_to: savedIssue.assigned_to,
+          status_text: savedIssue.status_text,
+          open: savedIssue.open,
+          created_on: savedIssue.created_by,
+          updated_on: savedIssue.updated_on,
+          _id: savedIssue._id
         };
         res.json(response);
       } catch (error) {
@@ -88,10 +75,10 @@ module.exports = function (app) {
         return res.send('no updated field sent');
       }
       const {
-        issue_title: title, issue_text: text, created_by: createdBy, assigned_to: assignedTo, status_text: statusText, open, _id
+        issue_title, issue_text, assigned_to, status_text, open, _id
       } = req.body;
       const updateIssue = {
-        title, text, assignedTo, statusText, open, updated_on: new Date()
+        issue_title, issue_text, assigned_to, status_text, open, updated_on: new Date()
       }
       issueModel.updateOne({ _id: _id }, updateIssue, { omitUndefined: true })
         .then((updateResponse) => {

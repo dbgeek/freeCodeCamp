@@ -3,23 +3,23 @@ const shortid = require('shortid');
 
 
 const IssueSchema = new mongoose.Schema({
-    title: {
+    issue_title: {
         type: String,
         required: true,
     },
-    text: {
+    issue_text: {
         type: String,
         required: true,
     },
-    createdBy: {
+    created_by: {
         type: String,
         required: true,
     },
-    assignedTo: {
+    assigned_to: {
         type: String,
         default: ''
     },
-    statusText: {
+    status_text: {
         type: String,
         default: ''
     },
@@ -37,10 +37,9 @@ const IssueSchema = new mongoose.Schema({
     },
     _id: {
         type: String,
-        //index: true,
         default: shortid.generate
     }
 })
-//created_on(date/time), updated_on(date/time), open
+
 const issueModel = mongoose.model('issue', IssueSchema);
 module.exports = issueModel;
