@@ -5,10 +5,9 @@
 *
 *
 */
-
 'use strict';
 
-var expect = require('chai').expect;
+const expect = require('chai').expect;
 const issueModel = require('../db/issue');
 
 module.exports = function (app) {
@@ -16,11 +15,13 @@ module.exports = function (app) {
   app.route('/api/issues/:project')
 
     .get(function (req, res) {
-      var project = req.params.project;
+      const project = req.params.project;
       const { query } = req;
 
       const keys = Object.keys(query);
-      const filters = {};
+      const filters = {
+        project: project
+      };
       keys.forEach(el => {
         filters[el] = query[el];
       })
@@ -38,21 +39,24 @@ module.exports = function (app) {
               open: el.open,
               created_by: el.created_by,
               created_on: el.created_on,
-              updated_on: el.updated_on
+              updated_on: el.updated_on,
+              project: el.project
             }
           })
           res.send(result);
         })
     })
+
     .post(async (req, res, next) => {
-      var project = req.params.project;
+      const project = req.params.project;
       const {
         issue_title, issue_text, created_by, assigned_to = '', status_text = '', open,
       } = req.body;
       try {
-        const issue = { issue_title, issue_text, created_by, assigned_to, status_text };
+        const issue = {project: project, issue_title, issue_text, created_by, assigned_to, status_text };
         const savedIssue = await issueModel.create(issue);
         const response = {
+          project: project,
           issue_title: savedIssue.issue_title,
           issue_text: savedIssue.issue_text,
           created_by: savedIssue.created_by,
@@ -70,7 +74,7 @@ module.exports = function (app) {
     })
 
     .put(function (req, res) {
-      var project = req.params.project;
+      const project = req.params.project;
       if (Object.keys(req.body).length === 0) {
         return res.send('no updated field sent');
       }
@@ -80,7 +84,7 @@ module.exports = function (app) {
       const updateIssue = {
         issue_title, issue_text, assigned_to, status_text, open, updated_on: new Date()
       }
-      issueModel.updateOne({ _id: _id }, updateIssue, { omitUndefined: true })
+      issueModel.updateOne({ _id: _id, project: project, }, updateIssue, { omitUndefined: true })
         .then((updateResponse) => {
           updateResponse.nModified === 0 ? res.send(`'could not update ${_id}.`) : res.send('successfully updated');
         })
@@ -88,16 +92,16 @@ module.exports = function (app) {
     })
 
     .delete(function (req, res) {
-      var project = req.params.project;
-      const { _id } = req.body;
+      const project = req.params.project;
+      const { _id} = req.body;
       if (_id === undefined) {
         return res.send('_id error');
       }
       issueModel.deleteOne({
-        _id: _id
+        _id: _id,
+        project: project
       }).then(
         res.send(`deleted ${_id}`)
       )
     })
-
 };

@@ -34,6 +34,7 @@ suite('Functional Tests', function () {
           assert.equal(res.body.created_by, 'Functional Test - Every field filled in');
           assert.equal(res.body.assigned_to, 'Chai and Mocha');
           assert.equal(res.body.status_text, 'In QA');
+          assert.equal(res.body.project, 'test');
           assert.equal(res.body.open, true);
           id = res.body._id;
           done();
@@ -54,6 +55,7 @@ suite('Functional Tests', function () {
           assert.equal(res.body.issue_text, 'text');
           assert.equal(res.body.created_by, 'Functional Test - Required fields filled in');
           assert.equal(res.body.open, true);
+          assert.equal(res.body.project, 'test');
           assert.property(res.body, 'assigned_to');
           assert.property(res.body, 'status_text');
           assert.property(res.body, 'created_on');
@@ -129,6 +131,7 @@ suite('Functional Tests', function () {
           assert.equal(res.status, 200);
           assert.isArray(res.body);
           assert.property(res.body[0], 'issue_title');
+          assert.property(res.body[0], 'project');
           assert.property(res.body[0], 'issue_text');
           assert.property(res.body[0], 'created_on');
           assert.property(res.body[0], 'updated_on');
@@ -152,6 +155,7 @@ suite('Functional Tests', function () {
           assert.isArray(res.body);
           assert.equal(res.body.length, 1);
           assert.property(res.body[0], 'issue_title');
+          assert.property(res.body[0], 'project');
           assert.property(res.body[0], 'issue_text');
           assert.property(res.body[0], 'created_on');
           assert.property(res.body[0], 'updated_on');
@@ -176,6 +180,7 @@ suite('Functional Tests', function () {
           assert.isArray(res.body);
           assert.equal(res.body.length, 1);
           assert.property(res.body[0], 'issue_title');
+          assert.property(res.body[0], 'project');
           assert.property(res.body[0], 'issue_text');
           assert.property(res.body[0], 'created_on');
           assert.property(res.body[0], 'updated_on');

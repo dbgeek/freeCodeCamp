@@ -7,6 +7,10 @@ const IssueSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    project: {
+        type: String,
+        required: true,
+    },
     issue_text: {
         type: String,
         required: true,
