@@ -12,16 +12,16 @@
 		"cors": "^2.8.1",
 		"body-parser": "^1.15.2",
 		"chai": "^4.2.0",
-		"mongodb": "^3.5.8",
+		"mongodb": "^3.5.9",
 		"chai-http": "^4.3.0",
-		"mocha": "^7.2.0",
+		"mocha": "^8.0.1",
 		"zombie": "^6.1.4",
-		"helmet": "^3.1.0",
+		"helmet": "^3.23.3",
 		"dotenv": "^8.2.0",
-		"mongoose": "^5.7.5"
+		"mongoose": "^5.9.20"
 	},
 	"devDependencies": {
-		"eslint": "^7.1.0",
+		"eslint": "^7.3.1",
 		"nodemon": "^2.0.4"
 	},
 	"engines": {

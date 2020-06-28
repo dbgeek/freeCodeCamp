@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"cors": "^2.8.1",
-		"express": "^5.0.0-alpha.2",
+		"express": "4.17.1",
 		"multer": "^1.4.2"
 	},
 	"engines": {
@@ -25,7 +25,7 @@
 		"express"
 	],
 	"devDependencies": {
-		"eslint": "^6.8.0",
+		"eslint": "^7.3.1",
 		"nodemon": "^2.0.3"
 	},
 	"license": "MIT"
