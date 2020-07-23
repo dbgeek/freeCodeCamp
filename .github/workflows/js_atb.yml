@@ -1,4 +1,4 @@
-name: Node.js CI
+name: american British english Translator CI
 on:
   push:
     paths:
