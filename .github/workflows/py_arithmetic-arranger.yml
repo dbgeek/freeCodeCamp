@@ -1,0 +1,21 @@
+name: arithmetic-arranger
+on:
+  push:
+    paths:
+      - 'python/fcc-arithmetic-arranger/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python ${{ matrix.python-version }}
+      actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Run python unit tests
+      working-directory: ./python/fcc-arithmetic-arranger
+      run: |
+        python -m unittest test_module
