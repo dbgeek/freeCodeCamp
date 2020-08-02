@@ -1,4 +1,6 @@
-### Assignment
+# Scientific Computing with Python Projects - Budget App
+
+## Assignment
 
 Complete the `Category` class in `budget.py`. It should be able to instantiate objects based on different budget categories like *food*, *clothing*, and *entertainment*. When objects are created, they are passed in the name of the category. The class should have an instance variable called `ledger` that is a list. The class should also contain the following methods:
 
@@ -9,12 +11,14 @@ Complete the `Category` class in `budget.py`. It should be able to instantiate o
 * A `check_funds` method that accepts an amount as an argument. It returns `False` if the amount is less than the balance of the budget category and returns `True` otherwise. This method should be used by both the `withdraw` method and `transfer` method.
 
 When the budget object is printed it should display:
+
 * A title line of 30 characters where the name of the category is centered in a line of `*` characters.
 * A list of the items in the ledger. Each line should show the description and amount. The first 23 characters of the description should be displayed, then the amount. The amount should be right aligned, contain two decimal places, and display a maximum of 7 characters.
 * A line displaying the category total.
 
 Here is an example of the output:
-```
+
+```text
 *************Food*************
 initial deposit        1000.00
 groceries               -10.15
@@ -31,7 +35,7 @@ This function will be tested with up to four categories.
 
 Look at the example output below very closely and make sure the spacing of the output matches the example exactly.
 
-```
+```text
 Percentage spent by category
 100|
  90|
@@ -57,14 +61,14 @@ Percentage spent by category
 
 The unit tests for this project are in `test_module.py`.
 
-### Development
+## Development
 
 Write your code in `budget.py`. For development, you can use `main.py` to test your `Category` class. Click the "run" button and `main.py` will run.
 
-### Testing
+## Testing
 
 We imported the tests from `test_module.py` to `main.py` for your convenience. The tests will run automatically whenever you hit the "run" button.
 
-### Submitting
+## Submitting
 
 Copy your project's URL and submit it to freeCodeCamp.
