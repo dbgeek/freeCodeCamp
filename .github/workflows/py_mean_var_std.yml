@@ -16,10 +16,11 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
+        working-directory: ./python/mean-var-std
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run python unit tests
-        working-directory: ./python/time-calculator
+        working-directory: ./python/mean-var-std
         run: |
           python -m unittest test_module

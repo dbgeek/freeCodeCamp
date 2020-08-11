@@ -16,6 +16,6 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Run python unit tests
-      working-directory: ./python/time-calculator
+      working-directory: ./python/polygon-area-calculator
       run: |
         python -m unittest test_module
