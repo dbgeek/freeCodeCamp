@@ -3,7 +3,7 @@ import demographic_data_analyzer
 
 class DemographicAnalyzerTestCase(unittest.TestCase):
     def setUp(self):
-        self.data = demographic_data_analyzer.calculate_demographic_data(print_data = True)
+        self.data = demographic_data_analyzer.calculate_demographic_data(print_data = False)
 
     def test_race_count(self):
         actual = self.data['race_count'].tolist()
