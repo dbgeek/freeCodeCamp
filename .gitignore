@@ -106,6 +106,7 @@ dist
 # python stuff
 __pycache__/
  *.pyc
+.ipynb_checkpoints
 
 # vscode stuff
 .vscode/
