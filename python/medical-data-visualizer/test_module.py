@@ -8,7 +8,7 @@ class CatPlotTestCase(unittest.TestCase):
     def setUp(self):
         self.fig = medical_data_visualizer.draw_cat_plot()
         self.ax = self.fig.axes[0]
-    
+
     def test_line_plot_labels(self):
         actual = self.ax.get_xlabel()
         expected = "variable"
@@ -39,7 +39,12 @@ class HeatMapTestCase(unittest.TestCase):
           actual.append(label.get_text())
         expected = ['id', 'age', 'gender', 'height', 'weight', 'ap_hi', 'ap_lo', 'cholesterol', 'gluc', 'smoke', 'alco', 'active', 'cardio', 'overweight']
         self.assertEqual(actual, expected, "Expected bar plot legend labels to be months of the year.")
-    
+
+    '''
+    require version matplotlib==3.2.2 to work else it failes with
+    Second list contains 3 additional elements.
+    AssertionError: Lists differ: ['0.0[607 chars] '0.2', '0.1', '0.1', '-0.0', '0.0', '-0.0', '0.1'] != ['0.0[607 chars] '0.2', '0.1', '0.1', '-0.0', '0.0', '-0.0', '0.1', '', '', '']
+    '''
     def test_heat_map_values(self):
         actual = [text.get_text() for text in self.ax.get_default_bbox_extra_artists() if isinstance(text, mpl.text.Text)]
         print(actual)
