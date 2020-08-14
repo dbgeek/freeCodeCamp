@@ -1,0 +1,4 @@
+matplotlib==3.2.2 # require this specif version to make tests work
+numpy
+pandas
+scipy
