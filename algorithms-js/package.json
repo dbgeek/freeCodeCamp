@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --maxWorkers=4",
-    "test-ci": "jest --maxWorkers=4"
+    "test": "jest --watchAll --maxWorkers=4 --verbose",
+    "test-ci": "jest --verbose"
   },
   "author": "",
   "license": "ISC",
