@@ -1,3 +1,4 @@
+import { sortedArray, unsortedArray } from './bigArray';
 import insertionSort from './insertionSort';
 
 test('insertionSort sort test2 sorted unsorted array', () => {
@@ -13,4 +14,9 @@ test('insertionSort sort test2 sorted array', () => {
 test('insertionSort sort test2 unsorted  3 length array', () => {
   expect(insertionSort([2, 1, 0]))
     .toEqual([0, 1, 2]);
+});
+
+test('insertionSort sort test2 unsorted big array', () => {
+  expect(insertionSort(unsortedArray))
+    .toEqual(sortedArray);
 });

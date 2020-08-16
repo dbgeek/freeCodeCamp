@@ -1,3 +1,4 @@
+import { sortedArray, unsortedArray } from './bigArray';
 import bubbleSort from './bubbleSort';
 
 test('bubble sort test2 sorted unsorted array', () => {
@@ -8,4 +9,9 @@ test('bubble sort test2 sorted unsorted array', () => {
 test('bubble sort test2 sorted array', () => {
   expect(bubbleSort([0, 1]))
     .toEqual([0, 1]);
+});
+
+test('bubble sort test2 unsorted big array', () => {
+  expect(bubbleSort(unsortedArray))
+    .toEqual(sortedArray);
 });

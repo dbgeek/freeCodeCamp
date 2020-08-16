@@ -1,3 +1,4 @@
+import { sortedArray, unsortedArray } from './bigArray';
 import selectionSort from './selectionSort';
 
 test('selection sort test2 sorted unsorted array', () => {
@@ -8,4 +9,9 @@ test('selection sort test2 sorted unsorted array', () => {
 test('selection sort test2 sorted array', () => {
   expect(selectionSort([0, 1]))
     .toEqual([0, 1]);
+});
+
+test('selection sort test2 unsorted big array', () => {
+  expect(selectionSort(unsortedArray))
+    .toEqual(sortedArray);
 });
