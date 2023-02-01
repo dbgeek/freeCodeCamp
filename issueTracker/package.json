@@ -13,7 +13,7 @@
 		"body-parser": "^1.15.2",
 		"chai": "^4.2.0",
 		"mongodb": "^3.5.9",
-		"mongoose": "^5.9.20",
+		"mongoose": "^5.13.15",
 		"chai-http": "^4.3.0",
 		"mocha": "^8.0.1",
 		"zombie": "^6.1.4",
